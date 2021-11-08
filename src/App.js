@@ -1,3 +1,4 @@
+import React from "react";
 import Expenses from "./components/Expenses";
 
 function App() {
@@ -8,11 +9,15 @@ function App() {
         {id: 'e4', title: 'Pen', amount: 87.12, date: new Date(2018, 7, 14),},
     ];
 
-    return (
-        <div>
-            <h2>Let's get started!</h2>
-            <Expenses items={expenses}/>
-        </div>
+    // return (
+    //     <div>
+    //         <h2>Let's get started!</h2>
+    //         <Expenses items={expenses}/>
+    //     </div>
+    // );
+    return React.createElement('div', {},
+        React.createElement('h2', {}, 'Let\'s get started!'),
+        React.createElement(Expenses, {items: expenses}),
     );
 }
 
