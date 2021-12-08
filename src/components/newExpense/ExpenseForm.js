@@ -2,7 +2,6 @@ import './ExpenseForm.css';
 import {useState} from "react";
 
 const ExpenseForm = (props) => {
-    const [addNewExpense, setAddNewExpense] = useState('init');
     const [enteredTitle, setEnteredTitle] = useState('');
     const [enteredAmount, setEnteredAmount] = useState('');
     const [enteredDate, setEnteredDate] = useState('');
@@ -32,32 +31,10 @@ const ExpenseForm = (props) => {
         setEnteredTitle('');
         setEnteredAmount('');
         setEnteredDate('');
-
-        setAddNewExpense('init');
     };
 
-    const cancelHandler = (event) => {
-        event.preventDefault();
-
-        setAddNewExpense('init');
-    }
-
-    const onAddNewExpense = () => {
-        setAddNewExpense('add');
-    }
-
-    if (addNewExpense === 'init') {
-        return (
-            <div className='add-new-expense__controls'>
-                <div className='new-expense__actions'>
-                    <button onClick={onAddNewExpense}>Add New Expense</button>
-                </div>
-            </div>
-        );
-    }
-
     return (
-        <form onSubmit={submitHandler} onReset={cancelHandler}>
+        <form onSubmit={submitHandler}>
             <div className='new-expense__controls'>
                 <div className='new-expense__control'>
                     <label>Title</label>
@@ -74,7 +51,7 @@ const ExpenseForm = (props) => {
                 </div>
             </div>
             <div className='new-expense__actions'>
-                <button type='reset'>Cancel</button>
+                <button type='button' onClick={props.onCancel}>Cancel</button>
                 <button type='submit'>Add Expense</button>
             </div>
         </form>
